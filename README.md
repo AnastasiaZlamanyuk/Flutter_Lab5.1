@@ -1,17 +1,56 @@
-# photo_of_the_day
+# Лабораторная работа №5. Асинхронность в Dart и Flutter. Создание приложения «Фото дня».
+Приложение на Flutter, которое загружает случайные фотографии собак или пейзажей из открытых API (или из локальных ресурсов).  Демонстрирует работу с асинхронностью в Dart: `Future`, `async/await`, загрузку данных по HTTP и индикацию загрузки.
 
-A new Flutter project.
+### Информация об авторе
+**Студенты:** Зламанюк А.А.; Телятникова Е.П.
 
-## Getting Started
+**Группа:** ИСП-231
 
-This project is a starting point for a Flutter application.
+### Стек и версии
+* Flutter: версия 3.41.1
+* Dart: версия 3.11.0
+* Платформа: Web (Chrome)
+* Пакеты: http
 
-A few resources to get you started if this is your first Flutter project:
+### Скриншот приложения
+![Скриншот приложения](img/step2_Zlamanyuk_Telyatnikova.png)
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+### Как запустить
+1. Клонируйте репозиторий:
+   ```bash
+   git clone https://github.com/AnastasiaZlamanyuk/Flutter_Lab5.1.git
+   cd Flutter_Lab5.1
+   ```
+2. Установите зависимости:
+   ```bash
+   flutter pub get
+   ```
+3. Подключите устройство или эмулятор, либо используйте Chrome:
+   ```bash
+   flutter run -d chrome
+   ```
+4. Дождитесь сборки и наслаждайтесь приложением.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Что изучили?
+* Модели данных в Flutter и Dart
+* Асинхронное программирование с использованием Future и async/await
+* Построение списков с помощью ListView.builder
+* Управление состоянием через setState
+* Работа с виджетами Card и Image
+
+### Ответы на вопросы:
+1. **Future<T>** — это объект, представляющий результат асинхронной операции, который может быть получен в будущем. Отличается от обычного возвращаемого значения тем, что:
+   * Возвращает результат не сразу
+   * Может быть обработан через then() или await
+   * Представляет асинхронную операцию
+2. **await** приостанавливает выполнение только текущей асинхронной функции, не блокируя весь поток выполнения приложения. Это позволяет другим частям приложения продолжать работу.
+3. **setState()** вызывается дважды в _fetchPhoto() из-за особенностей работы Flutter:
+   * Первый вызов — для обновления состояния во время загрузки
+   * Второй — после получения данных
+4. Кнопке передаётся _fetchPhoto без скобок, потому что:
+   * Нужно передать ссылку на функцию
+   * Скобки вызвали бы немедленный вызов функции
+   * Без скобок функция будет вызвана при нажатии
+5. **Image.network()** и **Image.asset()** отличаются источником изображения:
+   * Image.network() — загружает изображение из интернета по URL
+   * Image.asset() — берёт изображение из локальных ресурсов приложения
